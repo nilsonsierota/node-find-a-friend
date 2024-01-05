@@ -15,69 +15,69 @@ describe('Filter Pets Use Case', () => {
     sut = new FilterPets(petsRepository)
   })
 
-  // it('should be able to search for pets by city', async () => {
+  it.skip('should be able to search for pets by city', async () => {
 
-  //   const org = await orgsRepository.create({
-  //     adress: 'any_adress',
-  //     cep: '78840000',
-  //     email: 'johndoe@example.com',
-  //     name: 'John Doe',
-  //     password_hash: await hash('123456', 6),
-  //     whatsapp_number: 'any_whatsapp_number',
-  //   })
+    const org = await orgsRepository.create({
+      adress: 'any_adress',
+      cep: '78840000',
+      email: 'johndoe@example.com',
+      name: 'John Doe',
+      password_hash: await hash('123456', 6),
+      whatsapp_number: 'any_whatsapp_number',
+    })
 
-  //   await petsRepository.create({
-  //     name: 'any_name',
-  //     about: 'any_about',
-  //     age: 'any_age',
-  //     size: 'any_size',
-  //     energy: 'any_energy',
-  //     independency: 'any_independency',
-  //     habitat: 'any_habitat',
-  //     org_id: org.id,
-  //   })
+    await petsRepository.create({
+      name: 'any_name',
+      about: 'any_about',
+      age: 'any_age',
+      size: 'any_size',
+      energy: 'any_energy',
+      independency: 'any_independency',
+      habitat: 'any_habitat',
+      org_id: org.id,
+    })
 
-  //   const { pets } = await sut.execute({
-  //     cep: '78840000',
-  //     page: 1,
-  //   })
+    // const { pets } = await sut.execute({
+    //   cep: '78840000',
+    //   page: 1,
+    // })
 
-  //   expect(pets).toHaveLength(1)
-  //   expect(pets).toEqual([expect.objectContaining({ name: 'any_name' })])
-  // })
+    // expect(pets).toHaveLength(1)
+    // expect(pets).toEqual([expect.objectContaining({ name: 'any_name' })])
+  })
 
-  // it('should be able to fetch paginated pet search', async () => {
-  //   const org = await orgsRepository.create({
-  //     adress: 'any_adress',
-  //     cep: '78840000',
-  //     email: 'johndoe@example.com',
-  //     name: 'John Doe',
-  //     password_hash: await hash('123456', 6),
-  //     whatsapp_number: 'any_whatsapp_number',
-  //   })
+  it.skip('should be able to fetch paginated pet search', async () => {
+    const org = await orgsRepository.create({
+      adress: 'any_adress',
+      cep: '78840000',
+      email: 'johndoe@example.com',
+      name: 'John Doe',
+      password_hash: await hash('123456', 6),
+      whatsapp_number: 'any_whatsapp_number',
+    })
 
-  //   for (let i = 1; i <= 22; i++) {
-  //     await petsRepository.create({
-  //       name: `Pet Name ${i}`,
-  //       about: 'any_about',
-  //       age: 'any_age',
-  //       size: 'any_size',
-  //       energy: 'any_energy',
-  //       independency: 'any_independency',
-  //       habitat: 'any_habitat',
-  //       org_id: org.id,
-  //     })
-  //   }
+    for (let i = 1; i <= 22; i++) {
+      await petsRepository.create({
+        name: `Pet Name ${i}`,
+        about: 'any_about',
+        age: 'any_age',
+        size: 'any_size',
+        energy: 'any_energy',
+        independency: 'any_independency',
+        habitat: 'any_habitat',
+        org_id: org.id,
+      })
+    }
 
-  //   const { pets } = await sut.execute({
-  //     cep: '78840000',
-  //     page: 2,
-  //   })
+    // const { pets } = await sut.execute({
+    //   cep: '78840000',
+    //   page: 2,
+    // })
 
-  //   expect(pets).toHaveLength(2)
-  //   expect(pets).toEqual([
-  //     expect.objectContaining({ title: 'Pet Name 01' }),
-  //     expect.objectContaining({ title: 'Pet Name 22' }),
-  //   ])
-  // })
+    // expect(pets).toHaveLength(2)
+    // expect(pets).toEqual([
+    //   expect.objectContaining({ title: 'Pet Name 01' }),
+    //   expect.objectContaining({ title: 'Pet Name 22' }),
+    // ])
+  })
 })
