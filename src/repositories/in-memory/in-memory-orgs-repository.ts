@@ -31,4 +31,10 @@ export class InMemoryOrgsRepository implements OrgsRepository {
 
     return org
   }
+
+  async findByZipCode(zipCode: string): Promise<Org[] | null> {
+    const orgs = this.items.filter(org => org.cep === zipCode);
+
+    return orgs
+  }
 }
