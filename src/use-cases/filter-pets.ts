@@ -1,8 +1,8 @@
-import { PetsRepository } from "@/repositories/pet-repository"
+import { PetsRepository, QueryField } from "@/repositories/pet-repository"
 import { Pet } from "@prisma/client"
 
 interface FilterPetsRequest {
-  query: string
+  query: { field: QueryField, value: string }[]
   page: number
 }
 
