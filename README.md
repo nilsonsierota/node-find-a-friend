@@ -1,6 +1,6 @@
 # App
 
-GymPass style app.
+Find a Friend Api.
 
 ## RFs (Requisitos funcionais)
 
