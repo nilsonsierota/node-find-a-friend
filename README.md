@@ -1,4 +1,4 @@
-# App
+# API
 
 Find a Friend Api.
 
