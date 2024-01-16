@@ -1,6 +1,6 @@
 import { Org, Pet, Prisma } from "@prisma/client";
 
-export type QueryField = 'name' | 'age' | 'energy' | 'independency' | 'habitat' | 'org_id';
+export type QueryField = 'name' | 'age' | 'energy' | 'independency' | 'habitat' | 'size';
 
 export interface PetsRepository {
   create(data: Prisma.PetUncheckedCreateInput): Promise<Pet>;
