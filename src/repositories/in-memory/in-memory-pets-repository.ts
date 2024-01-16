@@ -1,4 +1,4 @@
-import { Pet, Prisma } from "@prisma/client";
+import { Org, Pet, Prisma } from "@prisma/client";
 import { randomUUID } from "crypto";
 import { PetsRepository, QueryField } from "../pet-repository";
 import { InMemoryOrgsRepository } from "./in-memory-orgs-repository";
@@ -7,9 +7,9 @@ export class InMemoryPetsRepository implements PetsRepository {
   public items: Pet[] = []
   public orgsRepository = new InMemoryOrgsRepository();
 
-  async searchMany(query: { field: QueryField, value: string }[], page: number) {
+  async searchMany(query: { field: QueryField, value: string }[], orgs: Org[], page: number) {
     return this.items
-      .filter((item) => query.every(query => item[query.field].includes(query.value)))
+      .filter((item) => orgs.every((org) => org.id === item.org_id) && query.every(query => item[query.field].includes(query.value)))
       .slice((page - 1) * 20, page * 20);
   }
 

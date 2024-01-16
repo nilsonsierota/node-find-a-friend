@@ -12,7 +12,7 @@ describe('Filter Pets Use Case', () => {
   beforeEach(async () => {
     petsRepository = new InMemoryPetsRepository()
     orgsRepository = new InMemoryOrgsRepository()
-    sut = new FilterPets(petsRepository)
+    sut = new FilterPets(petsRepository, orgsRepository)
   })
 
   it('should be able to search for pets by city zip code', async () => {
@@ -51,6 +51,7 @@ describe('Filter Pets Use Case', () => {
       query: [
         { field: 'org_id', value: org.id }
       ],
+      zipCode: '78840000',
       page: 1,
     })
 
@@ -95,6 +96,7 @@ describe('Filter Pets Use Case', () => {
         { field: 'age', value: '1', },
         { field: 'org_id', value: org.id }
       ],
+      zipCode: '78840000',
       page: 1,
     })
 
@@ -102,7 +104,7 @@ describe('Filter Pets Use Case', () => {
     expect(pets).toEqual([expect.objectContaining({ name: 'Pet Age 1' })])
   })
 
-  it.skip('should be able to fetch paginated pet search', async () => {
+  it('should be able to fetch paginated pet search', async () => {
     const org = await orgsRepository.create({
       adress: 'any_adress',
       cep: '78840000',
@@ -127,13 +129,14 @@ describe('Filter Pets Use Case', () => {
 
     const { pets } = await sut.execute({
       query: [],
+      zipCode: '78840000',
       page: 2,
     })
 
     expect(pets).toHaveLength(2)
     expect(pets).toEqual([
-      expect.objectContaining({ title: 'Pet Name 21' }),
-      expect.objectContaining({ title: 'Pet Name 22' }),
+      expect.objectContaining({ name: 'Pet Name 21' }),
+      expect.objectContaining({ name: 'Pet Name 22' }),
     ])
   })
 })
