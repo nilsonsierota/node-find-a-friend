@@ -7,6 +7,16 @@ export class InMemoryPetsRepository implements PetsRepository {
   public items: Pet[] = []
   public orgsRepository = new InMemoryOrgsRepository();
 
+  async findById(id: string) {
+    const pet = this.items.find(item => item.id === id);
+
+    if (!pet) {
+      return null
+    }
+
+    return pet
+  }
+
   async searchMany(query: { field: QueryField, value: string }[], orgs: Org[], page: number) {
     return this.items
       .filter((item) => orgs.every((org) => org.id === item.org_id) && query.every(query => item[query.field].includes(query.value)))
